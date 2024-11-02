@@ -26,17 +26,13 @@ const getCategories = asyncHandler(async (req, res) => {
 
 const createCategory = asyncHandler(async (req, res) => {
   try {
-    console.log(req.body, 'oooooooooooooooooooooooooooooooo');
     
     // get title from request body
-    const { title_ARM, title_ENG, title_RU } = req.body;
+    const { title } = req.body;
     // create new category
     const category = new Categories({
-      title_ARM,
-      title_ENG,
-      title_RU
+      title,
     });
-    console.log(category, 'ppppppp')
     // save the category in database
     const createdCategory = await category.save();
     // send the new category to the client

@@ -2,18 +2,10 @@ import mongoose from "mongoose";
 
 const CategoriesSchema = mongoose.Schema(
   {
-    title_ARM: {
+    title: {
       type: String,
       required: true,
-    },
-    title_ENG: {
-      type: String,
-      required: true,
-    },
-    title_RU: {
-      type: String,
-      required: true,
-    },
+    }
   },
   {
     timestamps: true,
