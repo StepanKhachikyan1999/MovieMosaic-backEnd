@@ -15,8 +15,8 @@ dotenv.config();
 const app = express();
 
 const options = {
-  key: fs.readFileSync('~/certs/practice/server.key'), // replace it with your key path
-  cert: fs.readFileSync('~/certs/practice/server.crt'), // replace it with your certificate path
+  key: fs.readFileSync('./server.key'), // replace it with your key path
+  cert: fs.readFileSync('./server.crt'), // replace it with your certificate path
 }
 
 // Configure CORS
