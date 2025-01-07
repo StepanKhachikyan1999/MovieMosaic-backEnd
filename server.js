@@ -13,11 +13,9 @@ dotenv.config();
 const app = express();
 
 // Configure CORS
-const allowedOrigins = ["https://movie-mosaic-weld.vercel.app/"]; // Replace with your Vercel app URL
 const corsOptions = {
-  origin: allowedOrigins,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true, // Allow cookies if needed
+  origin: 'https://movie-mosaic-weld.vercel.app/',//(https://your-client-app.com)
+  optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
 
@@ -27,7 +25,7 @@ app.use(express.json());
 connectDB();
 
 // Main route
-app.get("/", (req, res) => {
+app.get("/", cors(corsOptions), (req, res) => {
   res.send("API is running...");
 });
 
