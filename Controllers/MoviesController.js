@@ -22,13 +22,14 @@ const importMovies = asyncHandler(async (req, res) => {
 const getMovies = asyncHandler(async (req, res) => {
   try {
     // filter movies by category, time, language, rate, year and search
-    const { category, time, language, rate, year, search } = req.query;
+    const { category, time, language, rate, year, search, type } = req.query;
     let query = {
       ...(category && { category }),
       ...(time && { time }),
       ...(language && { language }),
       ...(rate && { rate }),
       ...(year && { year }),
+      ...(type && { type }),
       ...(search && { name: { $regex: search, $options: "i" } }),
     };
 

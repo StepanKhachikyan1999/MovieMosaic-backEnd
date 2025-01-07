@@ -11,26 +11,37 @@ import Uploadrouter from "./Controllers/UploadFile.js";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+// Configure CORS
+const allowedOrigins = ["https://movie-mosaic-weld.vercel.app/"]; // Replace with your Vercel app URL
+const corsOptions = {
+  origin: allowedOrigins,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true, // Allow cookies if needed
+};
+app.use(cors(corsOptions));
+
 app.use(express.json());
-// connect DB
+
+// Connect to DB
 connectDB();
 
 // Main route
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
-// other routes
+
+// Other routes
 app.use("/api/users", userRouter);
 app.use("/api/movies", moviesRouter);
 app.use("/api/categories", categoriesRouter);
 app.use("/api/upload", Uploadrouter);
 
-// error handling middleware
+// Error handling middleware
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`Server running in  http://localhost/${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
