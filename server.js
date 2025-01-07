@@ -21,7 +21,7 @@ const app = express();
 
 // Configure CORS
 const corsOptions = {
-  origin: 'http://localhost:3000',//(https://your-client-app.com)
+  origin: 'https://movie-mosaic-weld.vercel.app/',//(https://your-client-app.com)
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
